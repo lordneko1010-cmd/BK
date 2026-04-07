@@ -1,0 +1,305 @@
+# HTML dan JavaScript yang Sudah Diselaraskan
+
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bimbingan Konseling</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #f5f7fb;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(27, 94, 32, 0.9);
+      display: flex;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: white;
+      padding: 15px 20px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      background: #43a047;
+    }
+
+    .hero {
+      height: 90vh;
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+      url('https://images.unsplash.com/photo-1521791136064-7986c2920216');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      margin-bottom: 20px;
+    }
+
+    .hero button {
+      padding: 12px 25px;
+      border: none;
+      border-radius: 30px;
+      background: #4caf50;
+      color: white;
+      cursor: pointer;
+    }
+
+    .hero button:hover {
+      background: #2e7d32;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      margin-bottom: 25px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
+
+    h2 {
+      color: #2e7d32;
+      margin-bottom: 15px;
+    }
+
+    ul li {
+      margin: 10px 0;
+    }
+
+    .konselor {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .profile {
+      flex: 1;
+      min-width: 220px;
+      background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+      padding: 20px;
+      border-radius: 15px;
+      text-align: center;
+    }
+
+    .profile img {
+      width: 90px;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+
+    form input,
+    form textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+
+    form button {
+      width: 100%;
+      padding: 12px;
+      background: #2e7d32;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    form button:hover {
+      background: #1b5e20;
+    }
+
+    #notifikasi {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    #dataKonseling {
+      margin-top: 20px;
+    }
+
+    .pesan-item {
+      background: #e8f5e9;
+      padding: 15px;
+      margin-top: 10px;
+      border-left: 5px solid #2e7d32;
+      border-radius: 10px;
+    }
+
+    footer {
+      background: #1b5e20;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 28px;
+      }
+
+      nav {
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#layanan">Layanan</a>
+    <a href="#konselor">Konselor</a>
+    <a href="#kontak">Kontak</a>
+  </nav>
+
+  <section class="hero" id="home">
+    <h1>Bimbingan Konseling Online</h1>
+    <p>Solusi terbaik untuk membantu masalah Anda</p>
+    <button onclick="scrollKeForm()">Mulai Konsultasi</button>
+  </section>
+
+  <div class="container">
+
+    <section id="layanan" class="card">
+      <h2>Layanan Kami</h2>
+      <ul>
+        <li>Konseling Individu</li>
+        <li>Konseling Pendidikan</li>
+        <li>Konseling Karier</li>
+        <li>Konseling Keluarga</li>
+      </ul>
+    </section>
+
+    <section id="konselor" class="card">
+      <h2>Konselor Profesional</h2>
+      <div class="konselor">
+
+        <div class="profile">
+          <img src="Maryono.jpeg" alt="Maryono">
+          <h3>Dr. Maryono </h3>
+          <p>Spesialis Remaja</p>
+        </div>
+
+        <div class="profile">
+          <img src="Farhat.jpeg" alt="Farhat">
+          <h3>Dr. Farhat</h3>
+          <p>Spesialis Keluarga</p>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="kontak" class="card">
+      <h2>Konsultasi Sekarang</h2>
+
+      <form onsubmit="kirimPesan(event)">
+        <input type="text" id="nama" placeholder="Nama Anda" required>
+        <input type="email" id="email" placeholder="Email Anda" required>
+        <textarea id="pesan" rows="5" placeholder="Ceritakan masalah Anda" required></textarea>
+        <button type="submit">Kirim</button>
+      </form>
+
+      <p id="notifikasi"></p>
+
+      <div id="dataKonseling"></div>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Bimbingan Konseling</p>
+  </footer>
+
+  <script>
+    function kirimPesan(e) {
+      e.preventDefault();
+
+      let nama = document.getElementById("nama").value;
+      let email = document.getElementById("email").value;
+      let pesan = document.getElementById("pesan").value;
+
+      let data = {
+        nama: nama,
+        email: email,
+        pesan: pesan
+      };
+
+      let semuaData = JSON.parse(localStorage.getItem("konseling")) || [];
+      semuaData.push(data);
+      localStorage.setItem("konseling", JSON.stringify(semuaData));
+
+      let notif = document.getElementById("notifikasi");
+      notif.style.color = "green";
+      notif.innerHTML = `✅ Terima kasih ${nama}, pesan berhasil dikirim!`;
+
+      document.querySelector("form").reset();
+
+      tampilkanData();
+    }
+
+    function tampilkanData() {
+      let data = JSON.parse(localStorage.getItem("konseling")) || [];
+      let hasil = document.getElementById("dataKonseling");
+
+      hasil.innerHTML = "";
+
+      data.forEach(function(item) {
+        hasil.innerHTML += `
+          <div class="pesan-item">
+            <strong>${item.nama}</strong> (${item.email})<br>
+            ${item.pesan}
+          </div>
+        `;
+      });
+    }
+
+    function scrollKeForm() {
+      document.getElementById("kontak").scrollIntoView({
+        behavior: "smooth"
+      });
+    }
+
+    window.onload = tampilkanData;
+  </script>
+
+</body>
+</html>
+```
